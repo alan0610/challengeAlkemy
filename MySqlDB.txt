@@ -1,0 +1,32 @@
+CREATE TABLE `personaje` (
+   `id` INT AUTO_INCREMENT,
+   `imagen` VARCHAR(255),
+   `nombre` VARCHAR(255),
+   `edad` INT,
+   `peso` VARCHAR(255),
+   `historia` VARCHAR(255),
+   `pelicula_serie_id` INT,
+   PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `pelicula_serie` (
+   `id` INT AUTO_INCREMENT,
+   `imagen` VARCHAR(255),
+   `titulo` VARCHAR(255),
+   `fecha_creacion` DATE,
+   `calificacion` TINYINT(5),
+   `genero_id` INT,
+   PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `genero` (
+   `id` INT AUTO_INCREMENT,
+   `nombre` VARCHAR(255),
+   `imagen` VARCHAR(255),
+   PRIMARY KEY (`id`)
+);
+
+ALTER TABLE `pelicula_serie` ADD CONSTRAINT `FK_a5d3e07c-5670-4fc1-aad1-1dac1365128a` FOREIGN KEY (`genero_id`) REFERENCES `genero`(`id`)  ;
+
+ALTER TABLE `personaje` ADD CONSTRAINT `FK_4dcfb037-8ee9-4e20-9aed-f559e3ce43c3` FOREIGN KEY (`pelicula_serie_id`) REFERENCES `pelicula_serie`(`id`)  ;
+
